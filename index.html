@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopee Affiliate Bot</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Affiliate Link Generator</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Mua hàng shopee hoàn tiền 3-5%</h1>
-        <p>Nhập URL sản phẩm Shopee của bạn để tạo link tiếp thị liên kết:</p>
-        <input type="text" id="product-url" placeholder="Dán URL sản phẩm tại đây...">
-        <button id="generate-btn">Tạo link tiếp thị</button>
-        <div id="result" class="hidden">
-            <p>Chờ mụt xíu nha:</p>
-            <input type="text" id="affiliate-link" readonly>
-            <button id="copy-btn">Copy Link</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <h1>Affiliate Link Generator</h1>
+
+    <!-- Form để người dùng nhập tên sản phẩm -->
+    <label for="product">Nhập tên sản phẩm:</label>
+    <input type="text" id="product" name="product">
+    <button onclick="generateAffiliateLink()">Tạo Affiliate Link</button>
+
+    <!-- Hiển thị affiliate link khi người dùng nhập tên sản phẩm -->
+    <p id="affiliate-link"></p>
+
+    <!-- Thêm JavaScript vào cuối body -->
+    <script>
+        const affiliateLinks = {
+            "Khăn giấy cao cấp treo tường TopGia": "https://shopee.vn/product/502146001/21892074206",
+            "Máy đun và hâm nước pha sữa": "https://shopee.vn/product/1081024766/22155932525"
+            // Thêm các sản phẩm khác và link affiliate của bạn vào đây
+        };
+
+        function generateAffiliateLink() {
+            const productName = document.getElementById("product").value;
+            const link = affiliateLinks[productName];
+
+            const output = document.getElementById("affiliate-link");
+
+            if (link) {
+                output.innerHTML = `<a href="${link}" target="_blank">Xem sản phẩm: ${productName}</a>`;
+            } else {
+                output.innerHTML = "Sản phẩm không tìm thấy!";
+            }
+        }
+    </script>
 </body>
 </html>
