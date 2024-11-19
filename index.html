@@ -4,19 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affiliate Link Generator</title>
+    <style>
+        /* CSS cho căn giữa nội dung */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            min-width: 100vh;
+            min-height: 100vh; /* Chiều cao của banner */
+            background-image: url('Mua hàng Shopee hoàn tiền tới 50%.png'); /* Đổi URL này với đường dẫn banner của bạn */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Thêm để sử dụng tuyệt đối cho form */
+        }
+
+  
+
+
+        /* Form nhập liệu */
+        .content {
+            margin-top: 15%;
+        }
+        label, input, button {
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        /* Hiển thị affiliate link */
+        p {
+            margin-top: 20px;
+            font-size: 30px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Mua hàng shopee hoàn tiền 3-5%</h1>
+
 
     <!-- Form để người dùng nhập tên sản phẩm -->
-    <label for="product">Nhập tên sản phẩm:</label>
-    <input type="text" id="product" name="product">
-    <button onclick="generateAffiliateLink()">Chờ mụt xíu nha:</button>
+    <div class="content">
+        <label for="product">Nhập tên sản phẩm:</label>
+        <input type="text" id="product" name="product">
+        <button onclick="generateAffiliateLink()">Tạo Affiliate Link</button>
 
-    <!-- Hiển thị affiliate link khi người dùng nhập tên sản phẩm -->
-    <p id="affiliate-link"></p>
+        <!-- Hiển thị affiliate link khi người dùng nhập tên sản phẩm -->
+        <p id="affiliate-link"></p>
+    </div>
+    
 
-    <!-- Thêm JavaScript vào cuối body -->
+    <!-- JavaScript -->
     <script>
         const affiliateLinks = {
             "Khăn giấy cao cấp treo tường TopGia": "https://shopee.vn/product/502146001/21892074206",
@@ -25,13 +79,16 @@
         };
 
         function generateAffiliateLink() {
-            const productName = document.getElementById("product").value;
-            const link = affiliateLinks[productName];
+            const productName = document.getElementById("product").value.toLowerCase();
+            const foundProduct = Object.keys(affiliateLinks).find(product => 
+                product.toLowerCase().includes(productName) // Tìm kiếm bằng cách kiểm tra tên sản phẩm
+            );
 
             const output = document.getElementById("affiliate-link");
 
-            if (link) {
-                output.innerHTML = `<a href="${link}" target="_blank">Xem sản phẩm: ${productName}</a>`;
+            if (foundProduct) {
+                const link = affiliateLinks[foundProduct];
+                output.innerHTML = `<a href="${link}" target="_blank">Xem sản phẩm: ${foundProduct}</a>`;
             } else {
                 output.innerHTML = "Sản phẩm không tìm thấy!";
             }
