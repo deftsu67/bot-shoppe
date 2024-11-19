@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoàn tiền shopee</title>
+    <title>Affiliate Link Generator</title>
     <style>
         /* CSS cho căn giữa nội dung */
         *{
@@ -17,13 +17,11 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-           /* Cấu hình cho banner */
-            min-width: 100vw; /* Đảm bảo banner bao phủ hết chiều rộng màn hình */
+            min-width: 100vh;
             min-height: 100vh; /* Chiều cao của banner */
-            background-image: url('https://github.com/deftsu67/bot-shoppe/raw/main/Mua%20h%C3%A0ng%20Shopee%20ho%C3%A0n%20ti%E1%BB%81n%20t%E1%BB%9Bi%2050%25.png');
-            background-size: cover; /* Đảm bảo ảnh phủ toàn bộ vùng chứa */
-            background-position: center; /* Đảm bảo ảnh được căn giữa */
-            background-repeat: no-repeat; /* Đảm bảo ảnh không bị lặp lại */
+            background-image: url('Mua hàng Shopee hoàn tiền tới 50%.png'); /* Đổi URL này với đường dẫn banner của bạn */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,7 +63,7 @@
     <div class="content">
         <label for="product">Nhập tên sản phẩm:</label>
         <input type="text" id="product" name="product">
-        <button onclick="generateAffiliateLink()">Lấy link mua hàng</button>
+        <button onclick="generateAffiliateLink()">Tạo Affiliate Link</button>
 
         <!-- Hiển thị affiliate link khi người dùng nhập tên sản phẩm -->
         <p id="affiliate-link"></p>
@@ -76,12 +74,10 @@
     <script>
         const affiliateLinks = {
             "Giấy Ăn Gấu Trúc Mini": "https://s.shopee.vn/BCj64hWXQ",
-            "Khăn giấy treo tường Topgia":  "https://s.shopee.vn/40PRfCQuYA",
+            "Khăn Giấy Treo Tường Topgia": "https://s.shopee.vn/40PRfCQuYA",
             "Áo khoác phao logo Quảng Châu nữ SIÊU ẤM": "https://s.shopee.vn/1LOgU7b6em",
             "Áo hoodie DON'T SHOP nam nữ Form rộng": "https://s.shopee.vn/1Vi6gQaTJp",
             "Quần jean Suông Ống Rộng màu Xanh Nhạt": "https://s.shopee.vn/1g1WsjZpys",
-            "Áo Thun Local Brand SIGNATURE TEE - WHITE": "https://s.shopee.vn/2AxnTeXvy1",
-            "Áo sweater áo thu đông dài tay nữ": "https://s.shopee.vn/10lq5VcNKw",
         };
 
         function generateAffiliateLink() {
